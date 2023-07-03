@@ -8,7 +8,7 @@ if (!gg) {
 
 global.owner = gg.split(",");
 global.mongodb = process.env.MONGODB || "mongodb+srv://oguz162577:<oguz2516.>@cluster0.3qiww13.mongodb.net/?retryWrites=true&w=majority";
-global.sessionId = process.env.SESSION_ID || "ok";
+global.sessionId = process.env.SESSION_ID || "Zlose";
 global.prefa = process.env.PREFIX || "-";
 global.tenorApiKey = process.env.TENOR_API_KEY || "AIzaSyCyouca1_KKy4W_MG1xsPzuku5oa8W358c";
 global.packname = process.env.PACKNAME || `Atlas Bot`;
