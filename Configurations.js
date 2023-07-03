@@ -2,12 +2,12 @@ require("dotenv").config();
 
 let gg = process.env.MODS;
 if (!gg) {
-  gg = "918101187835";   // You can replace this number with yours //
+  gg = "905516491871";   // You can replace this number with yours //
 }
 
 
 global.owner = gg.split(",");
-global.mongodb = process.env.MONGODB || "Put your alternative mongodb url here";
+global.mongodb = process.env.MONGODB || "mongodb+srv://oguz162577:<oguz2516.>@cluster0.3qiww13.mongodb.net/?retryWrites=true&w=majority";
 global.sessionId = process.env.SESSION_ID || "ok";
 global.prefa = process.env.PREFIX || "-";
 global.tenorApiKey = process.env.TENOR_API_KEY || "AIzaSyCyouca1_KKy4W_MG1xsPzuku5oa8W358c";
