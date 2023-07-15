@@ -7,7 +7,7 @@ if (!gg) {
 
 
 global.owner = gg.split(",");
-global.mongodb = process.env.MONGODB || "mongodb+srv://muhittincabbar111:FOji9NNgrTLdJCbN@cluster0.jynic1d.mongodb.net/?retryWrites=true&w=majority
+global.mongodb = process.env.MONGODB || "mongodb+srv://fantox:xrto71r@cluster0.dnlowts.mongodb.net/?retryWrites=true&w=majority"
 ";
 global.sessionId = process.env.SESSION_ID || "Selo";
 global.prefa = process.env.PREFIX || "-";
