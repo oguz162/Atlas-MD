@@ -32,7 +32,7 @@ module.exports = {
     "topdf",
     "imgtopdf",
   ],
-  description: "All converter related commands",
+  description: "dönüştürücüyle ilgili tüm komutlar.",
   start: async (
     Atlas,
     m,
@@ -44,7 +44,7 @@ module.exports = {
         if (!m.quoted && !/webp/.test(mime)) {
           await doReact("❔");
           return m.reply(
-            `Please reply to a *Non-animated* sticker to convert it to image`
+            `Lütfen *animasyonsuz* bir çıkartmayı resme dönüştürmek için yanıtlayın.`
           );
         }
         await doReact("🎴");
@@ -56,7 +56,7 @@ module.exports = {
             Atlas.sendMessage(
               m.from,
               {
-                text: `Please mention a *Non-animated* sticker to process ! \n\nOr use *${prefix}togif* / *${prefix}tomp4*  to process *Animated* sticker !`,
+                text: `Lütfen *animasyonsuz* bir sticker üzerinde kullanın! \n\nveya *${prefix}togif* / *${prefix}tomp4*  komutlarıyla *animasyonlu* stickerlar dönüştürünüz !`,
               },
               { quoted: m }
             );
@@ -76,7 +76,7 @@ module.exports = {
         if (!m.quoted && !/webp/.test(mime)) {
           await doReact("❔");
           return reply(
-            `Please reply to an *Animated* sticker to convert it to video !`
+            `Lütfen *Animasyonlu* stickerı videoya dönüştürmek için yanıtlayınız!`
           );
         }
         await doReact("🎴");
@@ -94,11 +94,12 @@ module.exports = {
         fs.unlinkSync(mediaMess2);
         break;
 
+        
       case "togif":
         if (!m.quoted && !/webp/.test(mime)) {
           await doReact("❔");
           return m.reply(
-            `Please reply to an *Animated* sticker to convert it to gif !`
+            `Lütfen *Animasyonlu* stickerı gifte dönüştürmek için yanıtlayınız!`
           );
         }
         await doReact("🎴");
@@ -122,19 +123,19 @@ module.exports = {
         if (/document/.test(mime)) {
           await doReact("❌");
           return m.reply(
-            `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption *${prefix}tomp3*`
+            `Lütfen mp3 e dönüştürmek istediğiniz video/ses i altyazılı yada yanıtlayarak gönderiniz !*${prefix}tomp3*`
           );
         }
         if (!/video/.test(mime) && !/audio/.test(mime)) {
           await doReact("❌");
           return reply(
-            `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption *${prefix}tomp3*`
+            `Lütfen mp3 e dönüştürmek istediğiniz video/ses i altyazılı yada yanıtlayarak gönderiniz !*${prefix}tomp3*`
           );
         }
         if (!m.quoted) {
           await doReact("❔");
           return m.reply(
-            `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix}tomp3`
+            `Lütfen mp3 e dönüştürmek istediğiniz video/ses i altyazılı yada yanıtlayarak gönderiniz ! ${prefix}tomp3`
           );
         }
         await doReact("🎶");
@@ -287,4 +288,4 @@ module.exports = {
         break;
     }
   },
-};
+}
