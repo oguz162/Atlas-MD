@@ -61,7 +61,7 @@
     "moment-timezone": "^0.5.43",
     "mongoose": "^7.1.1",
     "mumaker": "^1.0.0",
-    "music-metadata": "^7.12.3",
+    "music-metadata": "^8.0.0",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.9",
     "node-id3": "^0.2.6",
