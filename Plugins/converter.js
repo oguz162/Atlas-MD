@@ -215,7 +215,7 @@ module.exports = {
         } else {
           await doReact("❌");
           return m.reply(
-            `Bağlantı oluşturmak için lütfen bir *Resim* / *Video* sağlayın!``
+            `Bağlantı oluşturmak için lütfen bir *Resim* / *Video* sağlayın!`
           );
         }
         await fs.unlinkSync(media5);
