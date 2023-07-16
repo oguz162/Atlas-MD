@@ -12,7 +12,7 @@ module.exports = {
   name: "downloader",
   alias: [...mergedCommands],
   uniquecommands: ["igdl", "fbdl", "mediafiredl"],
-  description: "All file dowloader commands",
+  description: "Tüm dosya indirme komutları",
   start: async (Atlas, m, { inputCMD, text, doReact, prefix, pushName }) => {
     switch (inputCMD) {
       case "igdl":
@@ -26,13 +26,13 @@ module.exports = {
         if (!text.includes("instagram")) {
           await doReact("❌");
           return m.reply(
-            `Please provide a valid instagram Reel/Video link !\n\nExample: *${prefix}igdl https://www.instagram.com/p/CP7Y4Y8J8ZU/*`
+            `Lütfen geçerli bir instagram Reel/Video bağlantısı sağlayın !`
           );
         }
         await doReact("📥");
         await Atlas.sendMessage(
           m.from,
-          { text: "*Please wait, I'm downloading your video...*" },
+          { text: "*Lütfen bekleyin, videonuzu indiriyorum...*" },
           { quoted: m }
         );
 
@@ -46,14 +46,14 @@ module.exports = {
             m.from,
             {
               video: { url: scrappedURL },
-              caption: `Downloaded by: *${botName}* \n\n_*🎀 Powered by:*_ *Scrappy API - by FantoX*\n\n_*🧩 Url:*_ https://github.com/FantoX001/Scrappy-API \n`,
+              caption: `Downloaded by: *${botName}*`,
             },
             { quoted: m }
           );
         } catch (err) {
           await doReact("❌");
           await m.reply(
-            `Video access denied ! It's private or has some other restrictions.`
+            `Video erişimi reddedildi! Özeldir veya başka kısıtlamaları vardır.`
           );
         }
         break;
@@ -63,27 +63,27 @@ module.exports = {
         if (!text) {
           await doReact("❌");
           return m.reply(
-            `Please provide a valid Mediafire link !\n\nExample: *${prefix}mediafire put_link*`
+            `Lütfen geçerli bir Mediafire bağlantısı sağlayın!`
           );
         }
         if (!text.includes("mediafire.com")) {
           await doReact("❌");
           return m.reply(
-            `Please provide a valid Mediafire link !\n\nExample: *${prefix}mediafire put_link*`
+            `Lütfen geçerli bir Mediafire bağlantısı sağlayın!`
           );
         }
 
         const MDF = await mediafireDl(text);
         if (MDF[0].size.split("MB")[0] >= 100)
-          return m.reply("File is too large in size!");
+          return m.reply("Dosyanın boyutu çok büyük!");
 
         let txt = `        *『 Mediafire Downloader 』*
         
-*🎀 File Name* : ${MDF[0].nama}
-*🧩 File Size* : ${MDF[0].size}
-*📌 File Format* : ${MDF[0].mime}
+*🎀 Dosya adı* : ${MDF[0].nama}
+*🧩 Dosya boyutu* : ${MDF[0].size}
+*📌 Dosya biçimi* : ${MDF[0].mime}
 
-Downloading...`;
+İndiriliyor...`;
 
         await doReact("📥");
         await m.reply(txt);
@@ -104,18 +104,18 @@ Downloading...`;
         if (!text) {
           await doReact("❌");
           return m.reply(
-            `Please provide a valid Facebook link !\n\nExample: *${prefix}fbdl put_link*`
+            `Lütfen geçerli bir Facebook bağlantısı sağlayın!`
           );
         }
         if (!text.includes("fb") && !text.includes("facebook")) {
           await doReact("❌");
           return m.reply(
-            `Please provide a valid Facebook link !\n\nExample: *${prefix}fbdl put_link*`
+            `Lütfen geçerli bir Facebook bağlantısı sağlayın!`
           );
         }
 
         await doReact("📥");
-        await m.reply(`Please wait, I'm downloading your video...`);
+        await m.reply(`Lütfen bekleyin, videonuzu indiriyorum...`);
         try {
           const res = await axios.get(
             "https://fantox001-scrappy-api.vercel.app/fbdl?url=" + text
@@ -126,14 +126,14 @@ Downloading...`;
             m.from,
             {
               video: { url: scrappedURL },
-              caption: `Downloaded by: *${botName}* \n\n_*🎀 Powered by:*_ *Scrappy API - by FantoX*\n\n_*🧩 Url:*_ https://github.com/FantoX001/Scrappy-API \n`,
+              caption: `Downloaded by: *${botName}*`,
             },
             { quoted: m }
           );
         } catch (err) {
           await doReact("❌");
           await m.reply(
-            `Video access denied ! It's private or only owner's friends can view it.`
+            `Video erişimi reddedildi! Gizlidir veya yalnızca sahibinin arkadaşları görüntüleyebilir.`
           );
         }
 
