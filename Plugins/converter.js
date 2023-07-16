@@ -188,7 +188,7 @@ module.exports = {
         if (!m.quoted) {
           await doReact("❔");
           return m.reply(
-            'Bağlantı oluşturmak için lütfen bir *Resim* / *Video* sağlayın! Caption ${prefix}tourl`
+            `Bağlantı oluşturmak için lütfen bir *Resim* / *Video* sağlayın! Caption ${prefix}tourl`
           );
         }
         let media5 = await Atlas.downloadAndSaveMediaMessage(quoted);
