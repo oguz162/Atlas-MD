@@ -123,19 +123,19 @@ module.exports = {
         if (/document/.test(mime)) {
           await doReact("❌");
           return m.reply(
-            `Lütfen mp3 e dönüştürmek istediğiniz video/ses i altyazılı yada yanıtlayarak gönderiniz !*${prefix}tomp3*`
+            `mp3 e dönüştürmek istediğiniz sesi/videoyu yanıtlayınız veya altyazıyla gönderiniz *${prefix}tomp3*`
           );
         }
         if (!/video/.test(mime) && !/audio/.test(mime)) {
           await doReact("❌");
           return reply(
-            `Lütfen mp3 e dönüştürmek istediğiniz video/ses i altyazılı yada yanıtlayarak gönderiniz !*${prefix}tomp3*`
+            `mp3 e dönüştürmek istediğiniz sesi/videoyu yanıtlayınız veya altyazıyla gönderiniz *${prefix}tomp3*`
           );
         }
         if (!m.quoted) {
           await doReact("❔");
           return m.reply(
-            `Lütfen mp3 e dönüştürmek istediğiniz video/ses i altyazılı yada yanıtlayarak gönderiniz ! ${prefix}tomp3`
+            `mp3 e dönüştürmek istediğiniz sesi/videoyu yanıtlayınız veya altyazıyla gönderiniz *${prefix}tomp3*`
           );
         }
         await doReact("🎶");
@@ -158,7 +158,7 @@ module.exports = {
         if (/document/.test(mime)) {
           await doReact("❌");
           return m.reply(
-            `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption *${prefix}tomp3*`
+            `mp3 e dönüştürmek istediğiniz sesi/videoyu yanıtlayınız veya altyazıyla gönderiniz *${prefix}tomp3*`
           );
         }
         if (!/video/.test(mime) && !/audio/.test(mime)) {
@@ -170,7 +170,7 @@ module.exports = {
         if (!m.quoted) {
           await doReact("❔");
           return m.reply(
-            `Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix}tomp3`
+            `mp3 e dönüştürmek istediğiniz sesi/videoyu yanıtlayınız veya altyazıyla gönderiniz *${prefix}tomp3*`
           );
         }
         await doReact("🎶");
@@ -188,26 +188,26 @@ module.exports = {
         if (!m.quoted) {
           await doReact("❔");
           return m.reply(
-            `Plese provide an *Image* / *Video* to generate a link! With Caption ${prefix}tourl`
+            'Bağlantı oluşturmak için lütfen bir *Resim* / *Video* sağlayın!`
           );
         }
         let media5 = await Atlas.downloadAndSaveMediaMessage(quoted);
         if (/image/.test(mime)) {
           await doReact("🔗");
           let anu = await GraphOrg(media5);
-          m.reply(`*Generated Image URL:* \n\n${util.format(anu)}\n`);
+          m.reply(`*oluşturulan resim  URL si:* \n\n${util.format(anu)}\n`);
         } else if (/video/.test(mime)) {
           await doReact("▶️");
           try {
             let anu = await GraphOrg(media5);
-            m.reply(`*Generated Video URL:* \n\n${util.format(anu)}\n`);
+            m.reply(`*oluşturulan Video URL si:* \n\n${util.format(anu)}\n`);
           } catch (e) {
             await doReact("❌");
             await fs.unlinkSync(media5);
             return Atlas.sendMessage(
               m.from,
               {
-                text: `*Your video size is too big!*\n\n*Max video size:* 5MB`,
+                text: `*Video boyutu çokk büyük!*\n\n*Max video boyutu:* 5MB`,
               },
               { quoted: m }
             );
@@ -215,7 +215,7 @@ module.exports = {
         } else {
           await doReact("❌");
           return m.reply(
-            `Plese provide an *Image* / *Video* to generate a link!`
+            `Bağlantı oluşturmak için lütfen bir *Resim* / *Video* sağlayın!``
           );
         }
         await fs.unlinkSync(media5);
@@ -275,12 +275,12 @@ module.exports = {
             await doReact("❌");
             console.error(error);
             return m.reply(
-              `An error occurred while converting the image to PDF.`
+              `Resim PDF e dönüştürülürken bir hata oluştu.`
             );
           }
         } else {
           await doReact("❔");
-          return m.reply(`Please reply to an *Image* to convert it to PDF!`);
+          return m.reply(`Lütfen bir *Görüntüyü* PDF ye dönüştürmek için yanıtlayın!`);
         }
         break;
 
