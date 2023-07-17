@@ -1,3 +1,8 @@
+
+        break;
+    }
+  },
+};
 const gis = require("g-i-s");
 const axios = require("axios");
 const hxzapi = require("hxz-api");
@@ -23,7 +28,7 @@ module.exports = {
     "gif",
     "pin",
   ],
-  description: "All picture related commands",
+  description: "Resimle ilgili tüm komutlar",
   start: async (Atlas, m, { inputCMD, text, doReact, prefix}) => {
     switch (inputCMD) {
       case "ppcouple":
@@ -48,13 +53,13 @@ module.exports = {
       case "image":
         if (!text) {
           await doReact("❔");
-          return m.reply(`Please provide an image Search Term !\n\nExample: *${prefix}image cheems*`);
+          return m.reply(`Lütfen bir görsel Arama Terimi girin!\n\nÖrnek: *${prefix}image cheems*`);
         }
         await doReact("🎴");
         gis(text, async (error, result) => {
           n = result;
           let images = n[Math.floor(Math.random() * n.length)].url;
-          let resText = `\n_🎀 Image Search Term:_ *${text}*\n\n_🧩 Powered by_ *${botName}*\n`;
+          let resText = `\n_🎀 Görsel Arama Terimi:_ *${text}*\n\n_🧩 Powered by_ *${botName}*\n`;
           /*
           let buttons = [
             {
@@ -81,7 +86,7 @@ module.exports = {
       case "gifsearch":
         if (!text) {
           await doReact("❔")
-            return m.reply(`Please provide an Tenor gif Search Term !\n\nExample: *${prefix}gif cheems bonk*`);
+            return m.reply(`Lütfen bir Tenor gif Arama Terimi girin !\n\nÖrnek: *${prefix}gif cheems bonk*`);
         }
         await doReact("🎴");
         let resGif = await axios.get(
@@ -94,7 +99,7 @@ module.exports = {
           {
             video: { url: gifUrl },
             gifPlayback: true,
-            caption: `🎀 Gif serach result for: *${text}*\n`,
+            caption: `🎀 Gif arama sonucu: *${text}*\n`,
           },
           { quoted: m }
         );
@@ -104,7 +109,7 @@ module.exports = {
       case "pinterest":
         if (!text) {
           await doReact("❔")
-            return m.reply(`Please provide an Pinterest image Search Term !\n\nExample: *${prefix}pin cheems*`);
+            return m.reply(`Lütfen bir Pinterest görsel Arama Terimi girin !\n\nÖrnek: *${prefix}pin cheems*`);
           
         }
         await doReact("📍");
@@ -119,7 +124,7 @@ module.exports = {
             type: 1,
           },
         ];*/
-            let txt = `\n_🎀 Pinterest Search Term:_ *${text}*\n\n_🧩 Powered by_ *${botName}*\n`;
+            let txt = `\n_🎀 Pinterest Arama Terimi:_ *${text}*\n\n_🧩 Powered by_ *${botName}*\n`;
             let buttonMessage = {
               image: { url: imgnyee },
               caption: txt,
