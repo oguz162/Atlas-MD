@@ -66,7 +66,7 @@ module.exports = {
     "unbangroup",
     "mode",
   ],
-  description: "All Moderator/Owner Commands",
+  description: "Tüm Moderatör/Sahip Komutları",
   start: async (
     Atlas,
     m,
@@ -100,7 +100,7 @@ module.exports = {
         if (!isCreator && !isintegrated && !isUsermod) {
           await doReact("❌");
           return m.reply(
-            "Sorry, only my *Mods* can use this command !"
+            "Üzgünüm, yalnızca benim *Mod'larım* bu komutu kullanabilir!"
           );
         }
     switch (inputCMD) {
@@ -108,7 +108,7 @@ module.exports = {
       case "setmod":
         if (!text && !m.quoted) {
           await doReact("❌");
-          return m.reply(`Please tag a user to make *mod*!`);
+          return m.reply(`Lütfen *mod* yapmak için bir kullanıcıyı etiketleyin!`);
         }
          mentionedUser = m.quoted ? m.quoted.sender : mentionByTag[0];
         userId = mentionedUser;
@@ -116,10 +116,10 @@ module.exports = {
         if (!isCreator && !isintegrated && isUsermod) {
           await doReact("❌");
           return m.reply(
-            "Sorry, only my *Owner* can use this command ! *Added Mods* does not have this permission."
+            "Üzgünüm, bu komutu yalnızca *Sahibim* kullanabilir! *Eklenen Modların* bu izni yoktur."
           );
         }
-        if (!userId) return m.reply("Please mention a valid user to ban!");
+        if (!userId) return m.reply("Lütfen yasaklamak için geçerli bir kullanıcı belirtin!");
 
         try {
           if (isUsermod) {
@@ -127,7 +127,7 @@ module.exports = {
             return Atlas.sendMessage(
               m.from,
               {
-                text: `@${userId.split("@")[0]} is already registered as a mod`,
+                text: `@${userId.split("@")[0]} Kullanıcıyı modlar listesine ekleyin ve veritabanına kaydedin`,
                 mentions: [userId],
               },
               { quoted: m }
@@ -143,7 +143,7 @@ module.exports = {
                 {
                   text: `@${
                     userId.split("@")[0]
-                  } is successfully registered to mods`,
+                  } başarıyla modlara kaydedildi`,
                   mentions: [userId],
                 },
                 { quoted: m }
@@ -162,7 +162,7 @@ module.exports = {
         // Check if a user is mentioned
         if (!text && !m.quoted) {
           await doReact("❔");
-          return m.reply(`Please tag a user to remove from *mod*!`);
+          return m.reply(`Lütfen *moddan* çıkarmak için bir kullanıcıyı etiketleyin!`);
         }
         mentionedUser = m.quoted ? m.quoted.sender : mentionByTag[0];
         userId = mentionedUser;
@@ -170,10 +170,10 @@ module.exports = {
         if (!isCreator && !isintegrated && isUsermod) {
           await doReact("❌");
           return m.reply(
-            "Sorry, only my *Owner* can use this command ! *Added Mods* does not have this permission."
+            "Üzgünüm, bu komutu yalnızca *Sahibim* kullanabilir! *Eklenen Modlar* bu izne sahip değil."
           );
         }
-        if (!userId) return m.reply("Please mention a valid user to ban!");
+        if (!userId) return m.reply("Lütfen yasaklamak için geçerli bir kullanıcı belirtin!");
 
         try {
           if (!isUsermod) {
@@ -181,7 +181,7 @@ module.exports = {
             return Atlas.sendMessage(
               m.from,
               {
-                text: `@${userId.split("@")[0]} is not registered as a mod !`,
+                text: `@${userId.split("@")[0]} mod olarak kayıtlı değil !`,
                 mentions: [userId],
               },
               { quoted: m }
@@ -195,7 +195,7 @@ module.exports = {
                 {
                   text: `@${
                     userId.split("@")[0]
-                  } is successfully removed to mods`,
+                  } başarıyla modlardan kaldırıldı`,
                   mentions: [userId],
                 },
                 { quoted: m }
@@ -225,27 +225,27 @@ module.exports = {
           let xyz = xy.concat(yz);
 
           ment = [ownerList.map((owner) => owner + "@s.whatsapp.net"), mention];
-          let textM = `    🧣  *${botName} Mods*  🧣\n\n`;
+          let textM = `    🧣  *${botName} Modlar*  🧣\n\n`;
 
           if (ownerList.length == 0) {
-            textM = "*No Mods Added !*";
+            textM = "*Hiç Mod Eklenmedi !*";
           }
 
-          textM += `\n〽️ *Owners* 〽️\n`;
+          textM += `\n〽 *️sahipler* 〽️\n`;
 
           for (var i = 0; i < ownerList.length; i++) {
             textM += `\n〄  @${ownerList[i]}\n`;
           }
 
           if (modlistString != "") {
-            textM += `\n🧩 *Added Mods* 🧩\n`;
+            textM += `\n🧩 *Modlar Eklendi* 🧩\n`;
             for (var i = 0; i < modlist.length; i++) {
               textM += `\n〄  @${modlist[i].id.split("@")[0]}\n`;
             }
           }
 
           if (modlistString != "" || ownerList.length != 0) {
-            textM += `\n\n📛 *Don't Spam them to avoid Blocking !*\n\n🎀 For any help, type *${prefix}support* and ask in group.\n\n*💫 Thanks for using ${botName}. 💫*\n`;
+            textM += `\n\n📛 *Engellemeyi önlemek için Spam Yapmayın !*\n\n🎀 Herhangi bir yardım için * yazın ${prefix}destek* ve grupta sorun. \n\n*💫 ${botName}'ı kullandığınız için teşekkürler. 💫*\n ${botName}. 💫*\n`;
           }
 
           Atlas.sendMessage(
@@ -263,7 +263,7 @@ module.exports = {
           await doReact("❌");
           return Atlas.sendMessage(
             m.from,
-            { text: `An internal error occurred while fetching the mod list.` },
+            { text: `Mod listesi alınırken dahili bir hata oluştu.` },
             { quoted: m }
           );
         }
@@ -276,7 +276,7 @@ module.exports = {
           await doReact("❌");
           return Atlas.sendMessage(
             m.from,
-            { text: `Please tag a user to *Ban*!` },
+            { text: `Lütfen bir kullanıcıyı *Ban*a etiketleyin.`
             { quoted: m }
           );
         } else if (m.quoted) {
@@ -288,7 +288,7 @@ module.exports = {
         if (!chechSenderModStatus && !isCreator && !isintegrated) {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `Sorry, only *Owners* and *Mods* can use this command !`,
+            text: `Üzgünüz, sadece *Sahipler* ve *Modlar* bu komutu kullanabilir !`,
             quoted: m,
           });
         }
@@ -299,14 +299,14 @@ module.exports = {
         globalOwner = global.owner;
         if (checkUserModStatus == true || globalOwner.includes(userNum)) {
           await doReact("❌");
-          return m.reply(`Sorry, I can't ban an *Owner* or *Mod* !`);
+          return m.reply(`Üzgünüm, bir *Sahibi* veya *Modu* yasaklayamam !`);
         }
         if (chechBanStatus) {
           await doReact("✅");
           return Atlas.sendMessage(
             m.from,
             {
-              text: `@${mentionedUser.split("@")[0]} is already *Banned* !`,
+              text: `@${mentionedUser.split("@")[0]} zaten *Yasaklı* !`,
               mentions: [mentionedUser],
             },
             { quoted: m }
@@ -319,7 +319,7 @@ module.exports = {
               {
                 text: `@${
                   mentionedUser.split("@")[0]
-                } has been *Banned* Successfully by *${pushName}*`,
+                } tarafından Başarıyla *Yasaklandı* *${pushName}*`,
                 mentions: [mentionedUser],
               },
               { quoted: m }
@@ -333,7 +333,7 @@ module.exports = {
       case "unbanuser":
         if (!text && !m.quoted) {
           await doReact("❌");
-          return m.reply(`Please tag a user to *Un-Ban*!`);
+          return m.reply(`Lütfen bir kullanıcıyı *Ban-Un-Un* için etiketleyin!`);
         } else if (m.quoted) {
           var mentionedUser = m.quoted.sender;
         } else {
@@ -343,7 +343,7 @@ module.exports = {
         if (!chechSenderModStatus && !isCreator && !isintegrated) {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `Sorry, only *Owners* and *Mods* can use this command !`,
+            text: `Üzgünüz, sadece *Sahipler* ve *Modlar* bu komutu kullanabilir !`,
             quoted: m,
           });
         }
@@ -357,7 +357,7 @@ module.exports = {
               {
                 text: `@${
                   mentionedUser.split("@")[0]
-                } has been *Un-Banned* Successfully by *${pushName}*`,
+                } tarafından *Yasağı Kaldırıldı* *${pushName}*`,
                 mentions: [mentionedUser],
               },
               { quoted: m }
@@ -366,7 +366,7 @@ module.exports = {
         } else {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `@${mentionedUser.split("@")[0]} is not *Banned* !`,
+            text: `@${mentionedUser.split("@")[0]} *Yasaklı* değil !`,
             mentions: [mentionedUser],
             quoted: m,
           });
@@ -378,7 +378,7 @@ module.exports = {
           await doReact("❌");
           return Atlas.sendMessage(
             m.from,
-            { text: `Please enter a character number between 0-19 to set !` },
+            { text: `Ayarlamak için lütfen 0-19 arasında bir karakter sayısı girin!` },
             { quoted: m }
           );
         }
@@ -386,7 +386,7 @@ module.exports = {
         if (!chechSenderModStatus && !isCreator && !isintegrated) {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `Sorry, only *Owners* and *Mods* can use this command !`,
+            text: `Üzgünüz, yalnızca *Sahipler* ve *Modlar* bu komutu kullanabilir !`,
             quoted: m,
           });
         }
@@ -396,7 +396,7 @@ module.exports = {
           await doReact("❌");
           return Atlas.sendMessage(
             m.from,
-            { text: `Please enter a character number between 0-19 to set !` },
+            { text: `Ayarlamak için lütfen 0-19 arasında bir karakter sayısı girin!` },
             { quoted: m }
           );
         }
@@ -452,7 +452,7 @@ module.exports = {
             m.from,
             {
               image: { url: botLogos[intinput] },
-              caption: `Character number *${intinput}* - *${botNames[intinput]}* is already default !`,
+              caption: `Karakter numarası *${intinput}* - *${botNames[intinput]}* zaten varsayılan !`,
             },
             { quoted: m }
           );
@@ -463,7 +463,7 @@ module.exports = {
           m.from,
           {
             image: { url: botLogos[intinput] },
-            caption: `Character number *${intinput}* - *${botNames[intinput]}* has been set Successfully by *${pushName}*`,
+            caption: `karakter numarası *${intinput}* - *${botNames[intinput]}* tarafından ayarlandı *${pushName}*`,
           },
           { quoted: m }
         );
@@ -474,14 +474,14 @@ module.exports = {
         if (!text) {
           await doReact("❌");
           return m.reply(
-            `Please provide On / Off action !\n\n*Example:*\n\n${prefix}pmchatbot on`
+            `Lütfen Açma / Kapama eylemi sağlayın !\n\n*Örnek:*\n\n${prefix}pmchatbot on` 
           );
         }
         chechSenderModStatus = await checkMod(m.sender);
         if (!chechSenderModStatus && !isCreator && !isintegrated) {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `Sorry, only *Owners* and *Mods* can use this command !`,
+            text: `Üzgünüz, yalnızca *Sahipler* ve *Modlar* bu komutu kullanabilir !`,
             quoted: m,
           });
         }
@@ -491,30 +491,30 @@ module.exports = {
           if (pmChatBotStatus) {
             await doReact("❌");
             return Atlas.sendMessage(m.from, {
-              text: `Private Chatbot is already *Enabled* !`,
+              text: `Özel Chatbot zaten *Etkin* !`,
               quoted: m,
             });
           } else {
             await activateChatBot();
             await m.reply(
-              `*PM Chatbot* has been *Enabled* Successfully ! \n\nBot will reply to all chats in PM !`
+              `*PM Chatbot* Başarıyla *Etkinleştirildi*! \n\nBot, PM'deki tüm sohbetlere cevap verecek !`
             );
           }
         } else if (args[0] === "off") {
           if (!pmChatBotStatus) {
             await doReact("❌");
             return Atlas.sendMessage(m.from, {
-              text: `Private Chatbot is already *Disabled* !`,
+              text: `Özel Chatbot zaten *Devre dışı* !`,
               quoted: m,
             });
           } else {
             await deactivateChatBot();
-            await m.reply(`*PM Chatbot* has been *Disabled* Successfully !`);
+            await m.reply(`*PM Chatbot* başarıyla *Devre dışı* bırakıldı !`);
           }
         } else {
           await doReact("❌");
           return m.reply(
-            `Please provide On / Off action !\n\n*Example:*\n\n${prefix}pmchatbot on`
+            `Lütfen Açma / Kapama eylemi sağlayın !\n\n*Örnek:*\n\n${prefix}pmchatbot on`
           );
         }
 
@@ -524,14 +524,14 @@ module.exports = {
       case "bangc":
         if (!m.isGroup) {
           await doReact("❌");
-          return m.reply(`This command can only be used in groups !`);
+          return m.reply(`Bu komut sadece gruplarda kullanılabilir !`);
         }
 
         chechSenderModStatus = await checkMod(m.sender);
         if (!chechSenderModStatus && !isCreator && !isintegrated) {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `Sorry, only *Owners* and *Mods* can use this command !`,
+            text: `Üzgünüz, yalnızca *Sahipler* ve *Modlar* bu komutu kullanabilir !`,
             quoted: m,
           });
         }
@@ -546,7 +546,7 @@ module.exports = {
         } else {
           await doReact("🧩");
           await banGroup(m.from);
-          await m.reply(`*${groupName}* has been *Banned* Successfully !`);
+          await m.reply(`*${groupName}* Başarıyla *Yasaklandı* !`);
         }
 
         break;
@@ -555,14 +555,14 @@ module.exports = {
       case "unbangc":
         if (!m.isGroup) {
           await doReact("❌");
-          return m.reply(`This command can only be used in groups !`);
+          return m.reply(`Bu komut sadece gruplarda kullanılabilir !`);
         }
 
         chechSenderModStatus = await checkMod(m.sender);
         if (!chechSenderModStatus && !isCreator && !isintegrated) {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `Sorry, only *Owners* and *Mods* can use this command !`,
+            text: `Üzgünüz, sadece *Sahipler* ve *Modlar* bu komutu kullanabilir !`,
             quoted: m,
           });
         }
@@ -571,13 +571,13 @@ module.exports = {
         if (!groupBanStatus) {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `This group is not banned !`,
+            text: `Bu grup yasaklı değil !`,
             quoted: m,
           });
         } else {
           await doReact("🧩");
           await unbanGroup(m.from);
-          await m.reply(`*${groupName}* has been *Unbanned* Successfully !`);
+          await m.reply(`*${groupName}* *Yasağı Kaldırıldı* Başarıyla !`);
         }
 
         break;
@@ -587,7 +587,7 @@ module.exports = {
         if (!text) {
           await doReact("❌");
           return m.reply(
-            `Please provide *Self / Private / Public* mode names !\n\n*Example:*\n\n${prefix}mode public`
+            `lütfen *Self / Private / Public* mod adlarını girin  !\n\n*Örnek:*\n\n${prefix}mode public`
           );
         }
 
@@ -595,7 +595,7 @@ module.exports = {
         if (!chechSenderModStatus && !isCreator && !isintegrated) {
           await doReact("❌");
           return Atlas.sendMessage(m.from, {
-            text: `Sorry, only *Owners* and *Mods* can use this command !`,
+            text: `Üzgünüz, yalnızca *Sahipler* ve *Modlar* bu komutu kullanabilir !`,
             quoted: m,
           });
         }
@@ -606,23 +606,23 @@ module.exports = {
           if (chechbotMode == "self") {
             await doReact("❌");
             return m.reply(
-              `Bot is already in *Self* mode !\n\nOnly *Bot Hoster (Bot number)* can use bot.`
+              `Bot zaten *Kendi* modunda\n\n*Sadece bot sahibi kullanabilir.`
             );
           } else {
             await doReact("🧩");
             await setBotMode("self");
-            await m.reply(`Bot has been set to *Self* mode Successfully !`);
+            await m.reply(`Bot Başarıyla *Kendi* moduna ayarlandı !`);
           }
         } else if (args[0] == "private") {
           if (chechbotMode == "private") {
             await doReact("❌");
             return m.reply(
-              `Bot is already in *Private* mode !\n\nOnly bot *Owners / Mods* can use bot.`
+              `Bot zaten *Özel* modda!`
             );
           } else {
             await doReact("🧩");
             await setBotMode("private");
-            await m.reply(`Bot has been set to *Private* mode Successfully !`);
+            await m.reply(`Bot Başarıyla *Gizli* moda ayarlandı !`);
           }
         } else if (args[0] == "public") {
           if (chechbotMode == "public") {
@@ -633,12 +633,12 @@ module.exports = {
           } else {
             await doReact("🧩");
             await setBotMode("public");
-            await m.reply(`Bot has been set to *Public* mode Successfully !`);
+            await m.reply(`Bot zaten *Genel* modunda!\n\nBot'u herkes kullanabilir.`);
           }
         } else {
           await doReact("❌");
           return m.reply(
-            `Please provide *Self / Private / Public* mode names !\n\n*Example:*\n\n${prefix}mode public`
+            `Lütfen *Self / Private / Public* mod adları girin !\n\n*Örnek:*\n\n${prefix}mode public`
           );
         }
 
