@@ -491,27 +491,26 @@ module.exports = {
       case "remove":
         if (!isAdmin) {
           await doReact("❌");
-          return m.reply(`Bu Komutu kullanabilmek için *Yönetici* olmalısınız!`);
+          return m.reply(`*You* must be *Admin* in order to use this Command!`);
         }
         if (!isBotAdmin) {
           await doReact("❌");
-          return m.reply(`*Bot* bu Komutu kullanabilmek için *Yönetici* olmalıdır!`);
-        }
+          return m.reply(`*Bot* must be *Admin* in order to use this Command!`);
         }
         if (quotedsender.includes(m.sender)) {
           await doReact("❌");
-          return m.reply(`Kendinizi bu gruptan *Çıkaramazsınız* !`);
+          return m.reply(`You cannot *Remove* yourself from this group !`);
         }
         if (quotedsender.includes(botNumber)) {
           await doReact("❌");
-          return m.reply(`Kendimi bu gruptan *Çıkaramıyorum* !`);
+          return m.reply(`I cannot *Remove* myself from this group !`);
         }
 
         if (!text && !m.quoted) {
           await doReact("❔");
           return Atlas.sendMessage(
             m.from,
-            { text: `Lütfen bir kullanıcıyı *Kaldırmak için etiketleyin !` },
+            { text: `Please tag a user to *Remove* !` },
             { quoted: m }
           );
         } else if (m.quoted) {
@@ -526,9 +525,9 @@ module.exports = {
           return Atlas.sendMessage(
             m.from,
             {
-              text: `*Komut Reddedildi !* @${
+              text: `*Command Rejected !* @${
                 mentionedUser.split("@")[0]
-              } etiketlediğiniz kişi bu grubun bir *Yöneticisi* olduğundan onu kaldırmanıza izin verilmez !`,
+              } Senpai is an *Admin* of this group so you are not allowed to remove him !`,
               mentions: [mentionedUser],
             },
             { quoted: m }
@@ -542,23 +541,23 @@ module.exports = {
               {
                 text: `@${
                   mentionedUser.split("@")[0]
-                } kaynağından başarıyla *Kaldırıldı*${metadata.subject}`,
+                } has been *Removed* Successfully from *${metadata.subject}*`,
                 mentions: [mentionedUser],
               },
               { quoted: m }
             )
         );
-    
-    break;
+
+        break;
 
       case "setppgc":
         if (!isAdmin) {
           await doReact("❌");
-          return m.reply(`Bu Komutu kullanabilmek için *Yönetici* olmalısınız!`);
+          return m.reply(`*You* must be *Admin* in order to use this Command!`);
         }
         if (!isBotAdmin) {
           await doReact("❌");
-          return m.reply(`*Bot* bu Komutu kullanabilmek için *Yönetici* olmalıdır!`);
+          return m.reply(`*Bot* must be *Admin* in order to use this Command!`);
         }
 
         if (!/image/.test(mime)) {
@@ -566,9 +565,9 @@ module.exports = {
           return Atlas.sendMessage(
             m.from,
             {
-              text: `Resimli Resim Gönder/yanıtla. ${
+              text: `Send/reply Image With Caption ${
                 prefix + "setgcpp"
-              } Bu grubun Profil Resmini değiştirmek için`,
+              } to change the Profile Pic of this group.`,
             },
             { quoted: m }
           );
@@ -601,8 +600,7 @@ module.exports = {
           m.from,
           {
             image: { url: ppgc },
-            caption: `\ntarafından Başarıyla güncellendi 
-            ! @${
+            caption: `\nGroup Profile Picture has been updated Successfully by @${
               messageSender.split("@")[0]
             } !`,
             mentions: [messageSender],
@@ -615,18 +613,18 @@ module.exports = {
       case "setgcdesc":
         if (!isAdmin) {
           await doReact("❌");
-          return m.reply(`Bu Komutu kullanabilmek için *Yönetici* olmalısınız!`);
+          return m.reply(`*You* must be *Admin* in order to use this Command!`);
         }
         if (!isBotAdmin) {
           await doReact("❌");
-          return m.reply(`*Bot* bu Komutu kullanabilmek için *Yönetici* olmalıdır!`);
+          return m.reply(`*Bot* must be *Admin* in order to use this Command!`);
         }
 
         if (!text && !m.quoted) {
           await doReact("❔");
           return Atlas.sendMessage(
             m.from,
-            { text: `Lütfen yeni bir grup açıklaması girin!` },
+            { text: `Please provide a new group description !` },
             { quoted: m }
           );
         }
@@ -646,7 +644,7 @@ module.exports = {
             m.from,
             {
               image: { url: ppgc, mimetype: "image/jpeg" },
-              caption: `*『 Grup açıklaması değiştirldi 』*\n\n_🧩 Yeni açıklama:_\n*${newGCdesc}*`,
+              caption: `*『 Group Description Changed 』*\n\n_🧩 New Description:_\n*${newGCdesc}*`,
             },
             { quoted: m }
           )
@@ -657,11 +655,11 @@ module.exports = {
       case "revoke":
         if (!isAdmin) {
           await doReact("❌");
-          return m.reply(`*Bu Komutu kullanabilmek için *Yönetici* olmalısınız!`);
+          return m.reply(`*You* must be *Admin* in order to use this Command!`);
         }
         if (!isBotAdmin) {
           await doReact("❌");
-          return m.reply(`*Bot* bu Komutu kullanabilmek için *Yönetici* olmalıdır!`);
+          return m.reply(`*Bot* must be *Admin* in order to use this Command!`);
         }
 
         if (m.from == "120363040838753957@g.us") {
@@ -675,7 +673,7 @@ module.exports = {
         await Atlas.groupRevokeInvite(m.from).then((res) =>
           Atlas.sendMessage(
             m.from,
-            { text: `Grup bağlantısı *Başarıyla güncellendi*!` },
+            { text: `Group link has been *Updated* Successfully!` },
             { quoted: m }
           )
         );
@@ -685,32 +683,32 @@ module.exports = {
       case "tagall":
         if (!isAdmin) {
           await doReact("❌");
-          return m.reply(`Bu Komutu kullanabilmek için *Yönetici* olmalısınız!`);
+          return m.reply(`*You* must be *Admin* in order to use this Command!`);
         }
         if (!isBotAdmin) {
           await doReact("❌");
-          return m.reply(`*Bot* bu Komutu kullanabilmek için *Yönetici* olmalıdır!`);
+          return m.reply(`*Bot* must be *Admin* in order to use this Command!`);
         }
         if (!isMedia) {
           var message2 = m.quoted
             ? m.quoted.msg
             : args[0]
             ? args.join(" ")
-            : "Mesaj yok";
+            : "No message";
         } else {
-          message2 = "Buna Bak!";
+          message2 = "Check this Out !";
         }
 
-        let mess = `            『 *Herkesin Dikkatine* 』
+        let mess = `            『 *Attention Everybody* 』
     
-*⚜️ Etiketleyen:* @${m.sender.split("@")[0]}
+*⚜️ Tagged by:* @${m.sender.split("@")[0]}
             
-*🧩 Mesaj:* ${message2};
+*🧩 Message:* ${message2};
 │\n`;
         for (let mem of participants) {
           mess += `┟ @${mem.id.split("@")[0]}\n`;
         }
-        mess += `╰────────────⊰\n\n                    *Teşekkürler*\n`;
+        mess += `╰────────────⊰\n\n                    *Thank You*\n`;
 
         await doReact("〽️");
         Atlas.sendMessage(
@@ -724,38 +722,38 @@ module.exports = {
       case "chatbotgc":
         if (!isAdmin) {
           await doReact("❌");
-          return m.reply(`Bu Komutu kullanabilmek için *Yönetici* olmalısınız!`);
+          return m.reply(`*You* must be *Admin* in order to use this Command!`);
         }
 
         if (!text) {
           await doReact("❔");
           return m.reply(
-            `Lütfen Açık / Kapalı eylemi sağlayın !\n\n*Örnek:*\n\n${prefix}chatbotgc on`
+            `Please provide On / Off action !\n\n*Example:*\n\n${prefix}chatbotgc on`
           );
         }
         chatbotGCStatus = await checkGroupChatbot(m.from);
         if (args[0] == "on") {
           if (chatbotGCStatus) {
             await doReact("❌");
-            return m.reply(`*Grup Chatbot* zaten *Etkin* !`);
+            return m.reply(`*Group Chatbot* is already *Enabled* !`);
           }
           await doReact("🧩");
           await setGroupChatbot(m.from);
           await m.reply(
-            `*Grup Chatbot* Başarıyla *Etkinleştirildi*! \n\nBot, bottan bahseden mesajlara cevap vermeyecek!`
+            `*Group Chatbot* has been *Enabled* Successfully ! \n\nBot will not reply to messages where bot is mentioned!`
           );
         } else if (args[0] == "off") {
           if (!chatbotGCStatus) {
             await doReact("❌");
-            return m.reply(`*Grup Chatbot* zaten *Devre Dışı* !`);
+            return m.reply(`*Group Chatbot* is already *Disabled* !`);
           }
           await doReact("🧩");
           await delGroupChatbot(m.from);
-          await m.reply(`*Grup Chatbot* Başarıyla *Devre Dışı Bırakıldı* !`);
+          await m.reply(`*Group Chatbot* has been *Disabled* Successfully !`);
         } else {
           await doReact("❔");
           return m.reply(
-            `Lütfen Açık / Kapalı eylemi sağlayın !\n\n*Örnek:*\n\n${prefix}chatbotgc on`
+            `Please provide On / Off action !\n\n*Example:*\n\n${prefix}chatbotgc on`
           );
         }
 
@@ -764,41 +762,42 @@ module.exports = {
       case "antilink":
         if (!isAdmin) {
           await doReact("❌");
-          return m.reply(`Bu Komutu kullanabilmek için *Yönetici* olmalısınız!`);
+          return m.reply(`*You* must be *Admin* in order to use this Command!`);
         }
         if (!isBotAdmin) {
           await doReact("❌");
-          return m.reply(`*Bot* bu Komutu kullanabilmek için *Yönetici* olmalıdır!`);
+          return m.reply(`*Bot* must be *Admin* in order to use this Command!`);
         }
 
         if (!text) {
           await doReact("❔");
           return m.reply(
-            `Lütfen Açık / Kapalı eylemi sağlayın!\n\n*Örnek:*\n\n${prefix}antilink on`
+            `Please provide On / Off action !\n\n*Example:*\n\n${prefix}antilink on`
           );
         }
         antilinkStatus = await checkAntilink(m.from);
         if (args[0] == "on") {
           if (antilinkStatus) {
             await doReact("❌");
-            return m.reply(`*Antilink* zaten *Etkin* !`);
+            return m.reply(`*Antilink* is already *Enabled* !`);
           }
           await doReact("⚜️");
           await setAntilink(m.from);
           await m.reply(
-            `*Antilink* Başarıyla *Etkinleştirildi*! \n\nBot, mesajlardan tüm bağlantıları kaldıracak!`
+            `*Antilink* has been *Enabled* Successfully ! \n\nBot will remove all links from messages!`
           );
         } else if (args[0] == "off") {
           if (!antilinkStatus) {
             await doReact("❌");
-            return m.reply(`*Antilink* zaten *Devre Dışı* !`);
+            return m.reply(`*Antilink* is already *Disabled* !`);
+          }
           await doReact("⚜️");
           await delAntilink(m.from);
-          await m.reply(`*Antilink* Başarıyla *Devre Dışı Bırakıldı* !`);
+          await m.reply(`*Antilink* has been *Disabled* Successfully !`);
         } else {
           await doReact("❔");
           return m.reply(
-            `Lütfen Açık / Kapalı eylemi sağlayın!\n\n*Örnek:*\n\n${prefix}antilink on`
+            `Please provide On / Off action !\n\n*Example:*\n\n${prefix}antilink on`
           );
         }
 
@@ -807,44 +806,44 @@ module.exports = {
       case "welcome":
         if (!isAdmin) {
           await doReact("❌");
-          return m.reply(`Bu Komutu kullanabilmek için *Yönetici* olmalısınız!`);
+          return m.reply(`*You* must be *Admin* in order to use this Command!`);
         }
         if (!isBotAdmin) {
           await doReact("❌");
-          return m.reply(`*Bot* bu Komutu kullanabilmek için *Yönetici* olmalıdır!`);
+          return m.reply(`*Bot* must be *Admin* in order to use this Command!`);
         }
 
         if (!text) {
           await doReact("❔");
           return m.reply(
-            `Lütfen Açık / Kapalı eylemi sağlayın !\n\n*Örnek:*\n\n${prefix}hoş geldiniz`
+            `Please provide On / Off action !\n\n*Example:*\n\n${prefix}welcome on`
           );
         }
         const welcomeStatus = await checkWelcome(m.from);
         if (args[0] == "on") {
           if (welcomeStatus) {
             await doReact("❌");
-            return m.reply(`*Hoş Geldiniz* zaten *Etkin* !`);
+            return m.reply(`*Welcome* is already *Enabled* !`);
           }
           await doReact("🎀");
           await setWelcome(m.from);
           await m.reply(
-            `*Hoş Geldiniz/Hoşçakalın* mesajları *Etkinleştirildi* Başarıyla !`
+            `*Welcome/Goodbye* messages are *Enabled* Successfully !`
           );
         } else if (args[0] == "off") {
           if (!welcomeStatus) {
             await doReact("❌");
-            return m.reply(`*Hoş Geldiniz* zaten *Devre Dışı* !`);
+            return m.reply(`*Welcome* is already *Disabled* !`);
           }
           await doReact("🎀");
           await delWelcome(m.from);
           await m.reply(
-            `*Hoş Geldiniz/Hoşçakalın* mesajları *Kapatıldı* Başarıyla !`
+            `*Welcome/Goodbye* messages are *Disabled* Successfully !`
           );
         } else {
           await doReact("❔");
           return m.reply(
-            `Lütfen Açık / Kapalı eylemi sağlayın !\n\n*Örnek:*\n\n${prefix}hoş geldiniz`
+            `Please provide On / Off action !\n\n*Example:*\n\n${prefix}welcome on`
           );
         }
 
