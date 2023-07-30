@@ -308,7 +308,7 @@ module.exports = async (Atlas, m, commands, chatUpdate) => {
     };
     const uptime = () => formatTime(process.uptime());
 
-    let upTxt = `〘  ${botName}  〙    ⚡ Uptime: ${uptime()}`;
+    let upTxt = `〘  ölümle yaşam arasında kalmış birisi  〙    ⚡ geçen süre: ${uptime()}`;
     Atlas.setStatus(upTxt);
 
     cmd.start(Atlas, m, {
