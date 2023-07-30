@@ -548,8 +548,8 @@ module.exports = {
               { quoted: m }
             )
         );
-
-        break;
+    
+    break;
 
       case "setppgc":
         if (!isAdmin) {
