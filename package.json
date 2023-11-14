@@ -63,7 +63,7 @@
     "mumaker": "^1.0.0",
     "music-metadata": "^7.12.3",
     "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.9",
+    "node-fetch": "^3.0.0",
     "node-id3": "^0.2.6",
     "openai": "^3.2.1",
     "path": "^0.12.7",
